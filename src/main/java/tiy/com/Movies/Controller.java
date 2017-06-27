@@ -14,9 +14,10 @@ public class Controller {
 	@RequestMapping(path = "/role", method = RequestMethod.GET) 
  	public String role(Model model, String fName, String lName, String birthday,
 			ArrayList<Movies> movies, String bio) { 
- 		ActorDirectorWriter aDW = new ActorDirectorWriter(fName, lName, birthday, movies, bio); 
- 		model.addAttribute("actordirectorwriter", aDW); 
- 		return "actordirectorwriter"; 
+ 		//ActorDirectorWriter aDW = new ActorDirectorWriter(fname, lName, birthday, movies, bio); 
+ 		Role role = new Role("john", "ulmer", "oct", null, "string string string"); 
+ 		model.addAttribute("role", role); 
+ 		return "role"; 
  	} 
 
 	

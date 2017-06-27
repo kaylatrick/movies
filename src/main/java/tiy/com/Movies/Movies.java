@@ -6,7 +6,7 @@ public class Movies {
 
 	String title;
 	String runtime;
-	int year;
+	Integer year;
 	String plotSummary;
 	Genre genre;
 	
@@ -23,7 +23,7 @@ public class Movies {
 	// calculation based on ratings list
 	//	Avg rating - operation on Ratings set
 
-	public Movies(String title, String runtime, int year, String plotSummary, Genre genre) {
+	public Movies(String title, String runtime, Integer year, String plotSummary, Genre genre) {
 		super();
 		this.title = title;
 		this.runtime = runtime;
@@ -52,7 +52,7 @@ public class Movies {
 		return year;
 	}
 
-	public void setYear(int year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 

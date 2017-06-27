@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MovieController {
 	@RequestMapping(path = "/movie", method = RequestMethod.GET)
 	public String movie(Model model, String title, 
-			String runtime, int year, String plotSummary, Genre genre) {
-			Movies m = new Movies(title, runtime, year, plotSummary, genre);
+			String runtime, Integer year, String plotSummary, Genre genre) {
+			Movies m = new Movies(title, runtime, 34, plotSummary, genre);
 			model.addAttribute("movie", m);
 			return "movie";
 	}

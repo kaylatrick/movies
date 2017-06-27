@@ -2,7 +2,7 @@ package tiy.com.Movies;
 
 import java.util.ArrayList;
 
-public class ActorDirectorWriter {
+public class Role {
 
 	private String fName;
 	private String lName;
@@ -10,7 +10,7 @@ public class ActorDirectorWriter {
 	private ArrayList<Movies> movies;
 	private String bio;	
 	
-	public ActorDirectorWriter(String fName, String lName, String birthday,
+	public Role(String fName, String lName, String birthday,
 			ArrayList<Movies> movies, String bio) {
 		super();
 		this.fName = fName;

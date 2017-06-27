@@ -7,12 +7,18 @@ public class ActorDirectorWriter {
 	private String fName;
 	private String lName;
 	private String birthday;
-	private ArrayList movies;
-	private String bio;
+	private ArrayList<Movies> movies;
+	private String bio;	
 	
-	
-	
-	
+	public ActorDirectorWriter(String fName, String lName, String birthday,
+			ArrayList<Movies> movies, String bio) {
+		super();
+		this.fName = fName;
+		this.lName = lName;
+		this.birthday = birthday;
+		this.movies = movies;
+		this.bio = bio;
+	}
 	public String getfName() {
 		return fName;
 	}
@@ -31,10 +37,10 @@ public class ActorDirectorWriter {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public ArrayList getMovies() {
+	public ArrayList<Movies> getMovies() {
 		return movies;
 	}
-	public void setMovies(ArrayList movies) {
+	public void setMovies(ArrayList<Movies> movies) {
 		this.movies = movies;
 	}
 	public String getBio() {

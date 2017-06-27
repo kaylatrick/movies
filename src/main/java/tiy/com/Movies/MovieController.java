@@ -12,8 +12,7 @@ public class MovieController {
 	
 	public String movie(Model model, String title, 
 			String runtime, Integer year, String plotSummary, Genre genre) {
-			Movies m = new Movies(title, runtime, 34, plotSummary, genre);
-
+			Movies m = new Movies(title, runtime, year, plotSummary, Genre.HORROR);
 			model.addAttribute("movie", m);
 			return "movie";
 	}

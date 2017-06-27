@@ -7,16 +7,13 @@ public class Role {
 	private String fName;
 	private String lName;
 	private String birthday;
-	private ArrayList<Movies> movies;
 	private String bio;	
 	
-	public Role(String fName, String lName, String birthday,
-			ArrayList<Movies> movies, String bio) {
+	public Role(String fName, String lName, String birthday, String bio) {
 		super();
 		this.fName = fName;
 		this.lName = lName;
 		this.birthday = birthday;
-		this.movies = movies;
 		this.bio = bio;
 	}
 	public String getfName() {
@@ -36,12 +33,6 @@ public class Role {
 	}
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
-	}
-	public ArrayList<Movies> getMovies() {
-		return movies;
-	}
-	public void setMovies(ArrayList<Movies> movies) {
-		this.movies = movies;
 	}
 	public String getBio() {
 		return bio;

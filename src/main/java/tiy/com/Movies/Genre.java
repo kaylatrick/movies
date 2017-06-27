@@ -1,5 +1,5 @@
 package tiy.com.Movies;
 
-public class Genre {
-
+public enum Genre {
+	DRAMA, HORROR, ACTION, COMEDY
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Role {
 
+	private int id;
 	private String fName;
 	private String lName;
 	private String birthday;
@@ -16,6 +17,11 @@ public class Role {
 		this.birthday = birthday;
 		this.bio = bio;
 	}
+	
+	public Role(){
+	
+	}
+	
 	public String getfName() {
 		return fName;
 	}

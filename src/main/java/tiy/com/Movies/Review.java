@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,27 +16,33 @@ public class Review implements Serializable {
 	@GeneratedValue
 	int id;
 	
-	int movieID;
-	int userID;
+	@ManyToOne
+	User author;
+	@ManyToOne
+	Movie movie;
 	String reviewText;
 	
-	public Review(int movieID, int userID, String reviewText) {
-		this.movieID = movieID;
-		this.userID = userID;
+	public Review() {
+		
+	}
+	
+	public Review(Movie movie, User author, String reviewText) {
+		this.movie = movie;
+		this.author = author;
 		this.reviewText = reviewText;
 	}
 	
-	public int getMovieID() { 
-		return movieID;
+	public Movie getMovie() { 
+		return movie;
 	}
-	public void setMovieID(int movieID) {
-		this.movieID = movieID;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
-	public int getUserID() {
-		return userID;
+	public User getAuthor() {
+		return this.author;
 	}
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 	public String getReviewText() {
 		return reviewText;

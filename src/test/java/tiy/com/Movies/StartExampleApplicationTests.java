@@ -1,4 +1,4 @@
-package tiy.com.StartExample;
+package tiy.com.Movies;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

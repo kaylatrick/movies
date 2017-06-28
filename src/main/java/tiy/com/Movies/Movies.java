@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Movies {
 
+	int id;
 	String title;
 	String runtime;
 	Integer year;

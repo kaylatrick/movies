@@ -13,8 +13,9 @@ public class RoleJSONController {
 	
 	@RequestMapping(path = "/role.json", method = RequestMethod.GET)
 	public Role jsonHome(String fName, String lName, String birthday, String bio) {	
-// http://localhost:8080/role.json?fName=John&lName=Ulmer&birthday=Oct&bio=test		
-		return new Role(fName, lName, birthday, bio); 
+// http://localhost:8080/role.json?fName=John&lName=Ulmer&birthday=Oct&bio=test	
+		Role r = new Role(fName, lName, birthday, bio);
+		return r; 
 
 	}
 }

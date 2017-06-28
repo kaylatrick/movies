@@ -20,6 +20,7 @@ public class RoleController {
  		Role r = new Role(fName, lName, birthday, bio); 
 // 		Role r = new Role("john", "ulmer", "oct", "string string string"); 
  		model.addAttribute("role", r); 
+ 		// enter person
  		r.setfName(fName);
  		r.setlName(lName);
  		r.setBirthday(birthday);
@@ -28,7 +29,7 @@ public class RoleController {
 		List<Role> roleList = roleRepository.findAll();
         for (Role roleRow : roleList) {
             System.out.printf("%s) %s %s\n", roleRow.getId(), roleRow.getfName(), roleRow.getlName()); }
- 		return "role";
+        return "role";
         
         }
 }

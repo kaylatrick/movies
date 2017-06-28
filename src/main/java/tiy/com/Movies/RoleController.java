@@ -17,12 +17,12 @@ public class RoleController {
 //		http://localhost:8080/role?fName=John&lName=Ulmer&birthday=Oct&bio=test		
  		Role r = new Role(fName, lName, birthday, bio); 
 // 		Role r = new Role("john", "ulmer", "oct", "string string string"); 
+ 		model.addAttribute("role", r); 
  		r.setfName(fName);
  		r.setlName(lName);
  		r.setBirthday(birthday);
  		r.setBio(bio);
  		roleRepository.save(r);
- 		model.addAttribute("role", r); 
  		return "role";
  		
  		

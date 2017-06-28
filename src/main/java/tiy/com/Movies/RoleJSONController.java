@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RoleJSONController {
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
 	@RequestMapping(path = "/role.json", method = RequestMethod.GET)
 	public Role jsonHome(String fName, String lName, String birthday, String bio) {	
 // http://localhost:8080/role.json?fName=John&lName=Ulmer&birthday=Oct&bio=test		

@@ -1,10 +1,22 @@
 package tiy.com.Movies;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Movies {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "movie")
+public class Movie implements Serializable {
+
+	@Id
+	@GeneratedValue
 	int id;
+	
 	String title;
 	String runtime;
 	Integer year;
@@ -24,7 +36,11 @@ public class Movies {
 	// calculation based on ratings list
 	//	Avg rating - operation on Ratings set
 
-	public Movies(String title, String runtime, Integer year, String plotSummary, Genre genre) {
+	public Movie() {
+		
+	}
+	
+	public Movie(String title, String runtime, Integer year, String plotSummary, Genre genre) {
 		super();
 		this.title = title;
 		this.runtime = runtime;
@@ -71,6 +87,9 @@ public class Movies {
 
 	public void setGenre(Genre genre) {
 		this.genre = genre;
+	}
+	public int getId() {
+		return id;
 	}
 
 }

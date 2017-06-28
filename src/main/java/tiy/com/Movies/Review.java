@@ -1,7 +1,20 @@
 package tiy.com.Movies;
 
-public class Review {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "review")
+public class Review implements Serializable {
+
+	@Id
+	@GeneratedValue
+	int id;
+	
 	int movieID;
 	int userID;
 	String reviewText;
@@ -29,6 +42,9 @@ public class Review {
 	}
 	public void setReviewText(String reviewText) {
 		this.reviewText = reviewText;
+	}
+	public int getId() {
+		return id;
 	}
 // Helpful?
 // Other users liking / rating the review

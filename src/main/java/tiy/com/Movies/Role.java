@@ -2,9 +2,19 @@ package tiy.com.Movies;
 
 import java.util.ArrayList;
 
-public class Role {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "role")
+public class Role {
+	
+	@Id
+	@GeneratedValue
 	private int id;
+	
 	private String fName;
 	private String lName;
 	private String birthday;
@@ -22,6 +32,13 @@ public class Role {
 	
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getfName() {
 		return fName;
 	}

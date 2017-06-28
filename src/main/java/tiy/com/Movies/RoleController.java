@@ -1,5 +1,7 @@
 package tiy.com.Movies;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +25,15 @@ public class RoleController {
  		r.setBirthday(birthday);
  		r.setBio(bio);
  		roleRepository.save(r);
+		List<Role> roleList = roleRepository.findAll();
+        for (Role roleRow : roleList) {
+            System.out.printf("%s) %s %s\n", roleRow.getId(), roleRow.getfName(), roleRow.getlName()); }
  		return "role";
- 		
- 		
- 	} 
-
-	
-	
-
+        
+        }
 }
+
+	
+	
+
+

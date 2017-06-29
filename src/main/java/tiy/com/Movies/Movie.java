@@ -6,30 +6,31 @@ import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 @Table(name = "movie")
-public class Movie implements Serializable {
-
+public class Movie {
+	
 	@Id
 	@GeneratedValue
 	int id;
+//	@ManyToOne
+//	ArrayList<Role> actorList;
+//	@ManyToOne
+//	ArrayList<Role> directorList;
+//	@ManyToOne
+//	ArrayList<Role> writerList;
 	
 	String title;
 	String runtime;
 	Integer year;
 	String plotSummary;
 	Genre genre;
-	
-	// handle as get methods for a particular movie
-	//ArrayList<Quote> quotes;
-	//ArrayList<Rating> ratings;
-	//ArrayList<Review> reviews;
-	//ArrayList<ActorDirectorWriter> actors;
-	//ArrayList<ActorDirectorWriter> directors;
-	//ArrayList<ActorDirectorWriter> writers;
 
 	// lookup from external data
 	//Showtimes
@@ -39,9 +40,19 @@ public class Movie implements Serializable {
 	public Movie() {
 		
 	}
+	public Movie(int id) {
+		this.id = id;
+	}
 	
 	public Movie(String title, String runtime, Integer year, String plotSummary, Genre genre) {
-		super();
+		this.title = title;
+		this.runtime = runtime;
+		this.year = year;
+		this.plotSummary = plotSummary;
+		this.genre = genre;
+	}
+	public Movie(int id, String title, String runtime, Integer year, String plotSummary, Genre genre) {
+		this.id = id;
 		this.title = title;
 		this.runtime = runtime;
 		this.year = year;

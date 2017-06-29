@@ -80,6 +80,7 @@ public class RoleJSONController {
 				
 		roleRepository.save(roleRepo);
 		return roleRepo;
+
 	}
 	
 }

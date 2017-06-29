@@ -26,16 +26,14 @@ public class MovieController {
 				String runtime, Integer year, String plotSummary, Genre genre) {
 				Movie m = new Movie("Title", "too long", 34, "things happened", Genre.HORROR);
 	//			http://localhost:8080/movie?title=%22title%22&runtime=%22tooLong%22&year=1995&plotSummary=%22pllot%22
-				resetDB();
+				//resetMovies();
+				//resetUsers();
+				//resetReviews();
 				model.addAttribute("movie", m);
 				return "movie";
 		}
 	
-	private void resetDB() {
-		resetMovies();
-		resetUsers();
-		resetReviews();
-	}
+	
 	private void resetReviews() {
         Review r1 = new Review(movieRepository.findOne(1), userRepository.findOne(1), "review 1");
         reviewRepository.save(r1);
@@ -64,14 +62,14 @@ public class MovieController {
         }
 	}
 	private void resetMovies() {
-		System.out.printf("The database contains %s movies.\n", movieRepository.count());
-		Movie m = new Movie("Polyester", "hours", 1976, "macrame is learned and hilarity ensues", Genre.HORROR);
+		//System.out.printf("The database contains %s movies.\n", movieRepository.count());
+		Movie m = new Movie("Polyester", "hours", 1981, "macrame is learned and hilarity ensues", Genre.HORROR);
 		movieRepository.save(m);
-		Movie m2 = new Movie("Dune", "a year or two", 1981, "addicts go bald", Genre.DRAMA);
+		Movie m2 = new Movie("Dune", "a year or two", 1984, "junkies go bald", Genre.DRAMA);
 		movieRepository.save(m2);
-		Movie m3 = new Movie("It", "three lifespans", 1988, "turtles fight spiders", Genre.ACTION);
+		Movie m3 = new Movie("It", "three lifespans", 1990, "turtles fight spiders", Genre.ACTION);
 		movieRepository.save(m3);
-		Movie m4 = new Movie("It's a Wonderful Life", "eternity", 34, "a cautionary tale about sub-prime lending", Genre.HORROR);
+		Movie m4 = new Movie("It's a Wonderful Life", "eternity", 1946, "a cautionary tale about sub-prime lending", Genre.HORROR);
 		movieRepository.save(m4);
 		System.out.printf("The database contains %s movies.\n", movieRepository.count());
 		List<Movie> movieList = movieRepository.findAll();

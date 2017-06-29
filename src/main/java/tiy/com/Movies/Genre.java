@@ -1,5 +1,5 @@
 package tiy.com.Movies;
 
 public enum Genre {
-	DRAMA, HORROR, ACTION, COMEDY
+	DRAMA, HORROR, ACTION, COMEDY, DONOTUPDATE
 }

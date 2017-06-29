@@ -40,9 +40,19 @@ public class Movie {
 	public Movie() {
 		
 	}
+	public Movie(int id) {
+		this.id = id;
+	}
 	
 	public Movie(String title, String runtime, Integer year, String plotSummary, Genre genre) {
-		super();
+		this.title = title;
+		this.runtime = runtime;
+		this.year = year;
+		this.plotSummary = plotSummary;
+		this.genre = genre;
+	}
+	public Movie(int id, String title, String runtime, Integer year, String plotSummary, Genre genre) {
+		this.id = id;
 		this.title = title;
 		this.runtime = runtime;
 		this.year = year;

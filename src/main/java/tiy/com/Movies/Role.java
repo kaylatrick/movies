@@ -1,10 +1,15 @@
 package tiy.com.Movies;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +18,7 @@ public class Role {
 	
 	@Id
 	@GeneratedValue
+//	@Column(name="ROLE_ID")
 	private int id;
 	
 	private String fName;
@@ -20,6 +26,18 @@ public class Role {
 	private String birthday;
 	private String bio;	
 	
+	@ManyToMany(mappedBy="roles")
+	private List<Movie> movies;
+
+	
+	public List<Movie> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
+	}
+
 	public Role(String fName, String lName, String birthday, String bio) {
 		super();
 		this.fName = fName;

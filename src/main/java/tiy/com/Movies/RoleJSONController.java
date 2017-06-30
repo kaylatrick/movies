@@ -17,6 +17,19 @@ public class RoleJSONController {
 	@Autowired
 	private RoleRepository roleRepository;
 	
+	@Autowired
+	private MovieRepository movieRepository;
+	
+	@RequestMapping(path = "/role/{movieId}/{roleId}", method = RequestMethod.PUT)
+	public void addMovieRole(@PathVariable(required = true) int movieId, @PathVariable(required = true) int roleId) {
+		Movie m = movieRepository.findOne(movieId);
+		Role r = roleRepository.findOne(roleId);
+		m.getRoles().add(r);
+		r.getMovies().add(m);
+		movieRepository.save(m);
+		roleRepository.save(r);
+	}
+	
 	@RequestMapping(path = "/role", method = RequestMethod.GET)
 	public List<Role> jsonHome(String fName, String lName, String birthday, String bio) {	
 // http://localhost:8080/role?fName=John&lName=Ulmer&birthday=Oct&bio=test	

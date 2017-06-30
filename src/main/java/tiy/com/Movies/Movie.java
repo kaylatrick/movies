@@ -1,20 +1,20 @@
 package tiy.com.Movies;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 @Table(name = "movie")
-public class Movie {
+public class Movie implements Serializable{
 	
 	@Id
 	@GeneratedValue
@@ -25,7 +25,9 @@ public class Movie {
 //	ArrayList<Role> directorList;
 //	@ManyToOne
 //	ArrayList<Role> writerList;
-	
+	//@OneToMany(mappedBy="movie")
+	//private List<Review> reviewList;
+
 	String title;
 	String runtime;
 	Integer year;
@@ -59,6 +61,10 @@ public class Movie {
 		this.plotSummary = plotSummary;
 		this.genre = genre;
 	}
+	
+
+    @OneToMany(cascade=ALL, mappedBy="movie")
+    public Set<Review> getReviews() { return reviews; }
 	
 	public String getTitle() {
 		return title;
@@ -102,5 +108,7 @@ public class Movie {
 	public int getId() {
 		return id;
 	}
-
+//	public List<Review> getReviewList() {
+//		return reviewList;
+//	}
 }

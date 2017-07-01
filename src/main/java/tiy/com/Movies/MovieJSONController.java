@@ -2,7 +2,6 @@ package tiy.com.Movies;
  
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class MovieJSONController {
 	@Autowired
 	private MovieRepository movieRepository;
+	@Autowired
+	private ReviewRepository reviewRepository;
 	
 	// return a movie for a specific ID
 	@RequestMapping(path = "/api/movie/{id}", method = RequestMethod.GET)
@@ -62,12 +63,23 @@ public class MovieJSONController {
 		return m;
 	}
 	
+	//get a list of all reviews for a movie
+	@RequestMapping(path = "/api/getAllReviewsForMovie", method = RequestMethod.GET)
+	public List<Review> jsonAllReviews() {
+		List<Review> reviewList = new ArrayList<Review>();
+		reviewList = reviewRepository.findAll();
+		Movie m = movieRepository.getOne(3);
+		//reviewList = reviewRepository.findAll(Movie m);
+		return reviewList;
+	}
+	
 	//find a list of movies based on querystring parameters
 	@RequestMapping(path = "/api/movie", method = RequestMethod.GET)
 	public List<Movie> findMovie(@RequestParam String title,
 			@RequestParam Integer year,
 			@RequestParam Genre genre) {
 		List<Movie> searchResults = new ArrayList<Movie>();
+		
 		if (title != null) {
 			//m.setTitle(updatingMovie.getTitle());
 		}
@@ -77,7 +89,7 @@ public class MovieJSONController {
 		if (genre != null) {
 			//m.setGenre(updatingMovie.getGenre());
 		}
-		return searchResults;
+		return searchResults;		
 	}
 
 	// get a list of all movies

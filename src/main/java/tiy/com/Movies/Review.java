@@ -3,6 +3,7 @@ package tiy.com.Movies;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -18,8 +19,10 @@ public class Review implements Serializable {
 	
 	@ManyToOne
 	User author;
-	@ManyToOne
+	
+	@ManyToOne(fetch=FetchType.LAZY)
 	Movie movie;
+	
 	String reviewText;
 	
 	public Review() {

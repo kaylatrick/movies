@@ -1,25 +1,33 @@
 package tiy.com.Movies;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "role")
-public class Role {
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+public class Role implements Serializable {
 	
 	@Id
 	@GeneratedValue
@@ -31,18 +39,21 @@ public class Role {
 	private String birthday;
 	private String bio;	
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
+//	@JoinColumn(name = "MOVIE_ID")
+//	(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 //	@JoinColumn(table="movie", name="MOVIE_ID")
 //	@JsonIgnore
-	@JsonManagedReference(value = "secondParent")
-	private List<Movie> movies;
+//	@JsonManagedReference(value = "secondParent")
+	@JsonBackReference
+	private Set<Movie> movies;
 
-
-	public List<Movie> getMovies() {
+	
+	public Set<Movie> getMovies() {
 		return movies;
 	}
 
-	public void setMovies(List<Movie> movies) {
+	public void setMovies(Set<Movie> movies) {
 		this.movies = movies;
 	}
 
@@ -55,8 +66,12 @@ public class Role {
 	}
 	
 	public Role(){
-		this.movies = new ArrayList<Movie>();
+		
 	}
+	
+//	public String getActor() {
+//		return fName + lName;
+//	}
 	
 	public int getId() {
 		return id;

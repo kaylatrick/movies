@@ -49,7 +49,7 @@ public class Movie implements Serializable{
 	private Genre genre;
 	
 	@ManyToMany(mappedBy="movies")
-//	@JsonBackReference(value = "secondParent")
+	@JsonBackReference(value = "secondParent")
 	private List<Role> roles;
 
 	// lookup from external data

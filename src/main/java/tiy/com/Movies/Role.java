@@ -34,7 +34,7 @@ public class Role {
 	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 //	@JoinColumn(table="movie", name="MOVIE_ID")
 //	@JsonIgnore
-//	@JsonManagedReference(value = "secondParent")
+	@JsonManagedReference(value = "secondParent")
 	private List<Movie> movies;
 
 

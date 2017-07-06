@@ -98,8 +98,8 @@ public class Movie implements Serializable{
 	}
 	
 
-    @OneToMany(cascade=ALL, mappedBy="movie")
-    public Set<Review> getReviews() { return reviews; }
+    //@OneToMany(cascade=ALL, mappedBy="movie")
+    //public Set<Review> getReviews() { return reviews; }
 	
 	public String getTitle() {
 		return title;

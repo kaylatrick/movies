@@ -1,5 +1,6 @@
 package tiy.com.Movies;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RoleJSONController {
+public class RoleJSONController implements Serializable{
 
 	@Autowired
 	private RoleRepository roleRepository;

@@ -39,12 +39,13 @@ public class Role implements Serializable {
 	private String birthday;
 	private String bio;	
 	
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
+
 //	@JoinColumn(name = "MOVIE_ID")
 //	(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 //	@JoinColumn(table="movie", name="MOVIE_ID")
 //	@JsonIgnore
 //	@JsonManagedReference(value = "secondParent")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles", cascade=CascadeType.ALL)
 	@JsonBackReference
 	private Set<Movie> movies;
 

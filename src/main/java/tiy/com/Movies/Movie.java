@@ -104,11 +104,13 @@ public class Movie implements Serializable{
 	}
 	
 
+
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="movie")
     private List<Review> reviews;
     
     public List<Review> getReviews() { 
     	return reviews; }
+
 	
 	public String getTitle() {
 		return title;

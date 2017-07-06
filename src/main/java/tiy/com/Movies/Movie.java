@@ -21,7 +21,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Table;
 
 
@@ -39,32 +41,35 @@ public class Movie implements Serializable{
 //	ArrayList<Role> directorList;
 //	@ManyToOne
 //	ArrayList<Role> writerList;
-	//@OneToMany(mappedBy="movie")
-	//private List<Review> reviewList;
-
-	String title;
-	String runtime;
-	Integer year;
-	String plotSummary;
-	Genre genre;
+	
+	private String title;
+	private String runtime;
+	private Integer year;
+	private String plotSummary;
+	private Genre genre;
+	
+	@ManyToMany(mappedBy="movies")
+	@JsonBackReference(value = "secondParent")
+	private List<Role> roles;
 
 	// lookup from external data
 	//Showtimes
 	// calculation based on ratings list
 	//	Avg rating - operation on Ratings set
 	
-	@ManyToMany(
-			targetEntity=Role.class,
-			cascade=CascadeType.ALL
-			)
-	@JoinTable(
-			name="MOVIE_ROLE",
-			joinColumns= @JoinColumn (table="movie", name="MOVIE_ID"),
-			inverseJoinColumns=@JoinColumn(table="role", name="ROLE_ID")
-			)
-	private List<Role> roles;
+//	@ManyToMany
+//	(
+//			targetEntity=Role.class,
+//			cascade=CascadeType.ALL
+//			)
+//	@JoinTable(
+//			name="MOVIE_ROLE",
+//			joinColumns= @JoinColumn (table="movie", name="MOVIE_ID"),
+//			inverseJoinColumns=@JoinColumn(table="role", name="ROLE_ID")
+//			)
 	
-
+	
+	
 	public List<Role> getRoles() {
 		return roles;
 	}
@@ -75,13 +80,14 @@ public class Movie implements Serializable{
 		this.id = id;
 	}
 	public Movie() {
-		
+		roles = new ArrayList<Role>();
 	}
 	public Movie(int id) {
 		this.id = id;
 	}
 	
 	public Movie(String title, String runtime, Integer year, String plotSummary, Genre genre) {
+		this();
 		this.title = title;
 		this.runtime = runtime;
 		this.year = year;
@@ -98,8 +104,13 @@ public class Movie implements Serializable{
 	}
 	
 
-    //@OneToMany(cascade=ALL, mappedBy="movie")
-    //public Set<Review> getReviews() { return reviews; }
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy="movie")
+    private List<Review> reviews;
+    
+    public List<Review> getReviews() { 
+    	return reviews; }
+
 	
 	public String getTitle() {
 		return title;

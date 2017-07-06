@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -22,14 +23,18 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.Table;
 
 
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @Table(name = "movie")
-public class Movie implements Serializable{
+public class Movie {
 	
 	@Id
 	@GeneratedValue
@@ -48,9 +53,14 @@ public class Movie implements Serializable{
 	private String plotSummary;
 	private Genre genre;
 	
-	@ManyToMany(mappedBy="movies")
-	@JsonBackReference(value = "secondParent")
-	private List<Role> roles;
+//	@ManyToMany(cascade = CascadeType.ALL) KR
+//	@JoinColumn(name = "role_id")
+//	@JsonBackReference(value = "secondParent")
+	
+	@JoinTable(name = "movie_role", joinColumns = @JoinColumn(name = "movie_id") , 
+			inverseJoinColumns = @JoinColumn(name = "role_id") )
+    @ManyToMany(fetch = FetchType.LAZY)
+	private Set<Role> roles;
 
 	// lookup from external data
 	//Showtimes
@@ -69,25 +79,24 @@ public class Movie implements Serializable{
 //			)
 	
 	
-	
-	public List<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
 	public Movie() {
-		roles = new ArrayList<Role>();
 	}
+	
 	public Movie(int id) {
 		this.id = id;
 	}
 	
 	public Movie(String title, String runtime, Integer year, String plotSummary, Genre genre) {
-		this();
+//		this();
 		this.title = title;
 		this.runtime = runtime;
 		this.year = year;

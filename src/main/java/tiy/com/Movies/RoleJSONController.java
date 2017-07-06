@@ -49,8 +49,8 @@ public class RoleJSONController {
 
 	@RequestMapping(path = "/role/{id}", method = RequestMethod.GET)
 	public Role getRole(@PathVariable int id) {
-		Role role = roleRepository.findOne(id);
-		System.out.println(role);
+		Role role = roleRepository.getOne(id);
+//		System.out.println(role);
 		return role;
 	}
 

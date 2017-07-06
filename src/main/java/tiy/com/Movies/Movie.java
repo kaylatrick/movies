@@ -49,8 +49,7 @@ public class Movie implements Serializable{
 	private Genre genre;
 	
 	@ManyToMany(mappedBy="movies")
-//	@JsonIgnore
-	@JsonBackReference
+	@JsonBackReference(value = "secondParent")
 	private List<Role> roles;
 
 	// lookup from external data
@@ -105,8 +104,10 @@ public class Movie implements Serializable{
 	}
 	
 
-    @OneToMany(cascade=ALL, mappedBy="movie")
-    public Set<Review> getReviews() { 
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy="movie")
+    private List<Review> reviews;
+    
+    public List<Review> getReviews() { 
     	return reviews; }
 	
 	public String getTitle() {

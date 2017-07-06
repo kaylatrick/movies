@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,7 +23,7 @@ public class Role {
 	
 	@Id
 	@GeneratedValue
-//	@Column(name="ROLE_ID")
+	@Column(name="ROLE_ID")
 	private int id;
 	
 	private String fName;
@@ -31,8 +32,9 @@ public class Role {
 	private String bio;	
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+//	@JoinColumn(table="movie", name="MOVIE_ID")
 //	@JsonIgnore
-	@JsonManagedReference
+	@JsonManagedReference(value = "secondParent")
 	private List<Movie> movies;
 
 

@@ -3,6 +3,10 @@ package tiy.com.Movies;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping; 
@@ -98,4 +102,16 @@ public class MovieJSONController {
 		List<Movie> movieList = movieRepository.findAll();
 		return movieList;
 	}
+	
+
+	
+//	@RequestMapping(path = "/api/user/login/{username}/{password}", method = RequestMethod.GET)
+//	public UsernamePasswordAuthenticationToken userLogin(@PathVariable String username, @PathVariable String password) {
+////		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+////		return auth;
+//		UsernamePasswordAuthenticationToken authRequest = new 
+//				UsernamePasswordAuthenticationToken(username, password);
+//		SecurityContextHolder.getContext().setAuthentication(authRequest);
+//		return authRequest;
+//	}
 }

@@ -58,13 +58,19 @@ public class RoleJSONController {
 	public Role insertRole(@RequestBody Role role) {
 		// http://localhost:8080/role?fName=John&lName=Ulmer&birthday=Oct&bio=test
 		Role r = new Role();
-		// Role r = new Role("john", "ulmer", "oct", "string string string");
+		//Role r = new Role("john", "ulmer", "oct", "string string string");
+		//Role r2 = new Role("herman", "hesse", "nov", "a bio");
+		//Role r3 = new Role("jean paul", "sartre", "dec", "a bio?");
+		//Role r4 = new Role("immanuel", "kant", "jan", "a new beginning");
 		// enter person
 		r.setfName(role.getfName());
 		r.setlName(role.getlName());
 		r.setBirthday(role.getBirthday());
 		r.setBio(role.getBio());
 		roleRepository.save(r);
+//		roleRepository.save(r2);
+//		roleRepository.save(r3);
+//		roleRepository.save(r4);
 		return r;
 	}
 

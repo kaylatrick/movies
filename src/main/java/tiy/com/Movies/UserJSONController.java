@@ -62,13 +62,13 @@ public class UserJSONController {
 		return u;
 	}
 	
-//	@RequestMapping(path = "/findMovies", method = RequestMethod.GET)
-//	public List<Movie> movieSearch(String title, Genre genre) {
-//		// http://localhost:8080/findMovies?title=yes
-//		// http://localhost:8080/findMovies?title=t
-//		List<Movie> movieList = movieRepository.findMovieBySearch(title);
-//		return movieList;
-//	}
+	@RequestMapping(path = "/api/findUsers", method = RequestMethod.GET)
+	public List<User> movieSearch(String username, String screenname) {
+		// http://localhost:8080/findMovies?title=yes
+		// http://localhost:8080/findMovies?title=t
+		List<User> userList = userRepository.findUserBySearch(username, screenname);
+		return userList;
+	}
 
 	// get a list of all users
 	@RequestMapping(path = "/api/getAllUsers", method = RequestMethod.GET)

@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController; 
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc; 
 
 @RestController
+//@EnableWebMvc
 public class MovieJSONController {
 	@Autowired
 	private MovieRepository movieRepository;
@@ -25,6 +27,7 @@ public class MovieJSONController {
 	@RequestMapping(path = "/api/movie/{id}", method = RequestMethod.GET)
 	public Movie jsonMovie(@PathVariable Integer id) {	
 		Movie m = movieRepository.getOne(id);
+		
 		return m;
 	}
 	
@@ -68,32 +71,21 @@ public class MovieJSONController {
 	}
 	
 	//get a list of all reviews for a movie
-	@RequestMapping(path = "/api/getAllReviewsForMovie", method = RequestMethod.GET)
+	@RequestMapping(path = "/api/getAllReviews", method = RequestMethod.GET)
 	public List<Review> jsonAllReviews() {
 		List<Review> reviewList = new ArrayList<Review>();
 		reviewList = reviewRepository.findAll();
-		Movie m = movieRepository.getOne(3);
+		//Movie m = movieRepository.getOne(3);
 		//reviewList = reviewRepository.findAll(Movie m);
 		return reviewList;
 	}
 	
-	//find a list of movies based on querystring parameters
-	@RequestMapping(path = "/api/movie", method = RequestMethod.GET)
-	public List<Movie> findMovie(@RequestParam String title,
-			@RequestParam Integer year,
-			@RequestParam Genre genre) {
-		List<Movie> searchResults = new ArrayList<Movie>();
-		
-		if (title != null) {
-			//m.setTitle(updatingMovie.getTitle());
-		}
-		if (year != null) {
-			//m.setYear(updatingMovie.getYear());
-		}
-		if (genre != null) {
-			//m.setGenre(updatingMovie.getGenre());
-		}
-		return searchResults;		
+	@RequestMapping(path = "/findMovies", method = RequestMethod.GET)
+	public List<Movie> movieSearch(String title, Genre genre) {
+		// http://localhost:8080/findMovies?title=yes
+		// http://localhost:8080/findMovies?title=t
+		List<Movie> movieList = movieRepository.findMovieBySearch(title);
+		return movieList;
 	}
 
 	// get a list of all movies

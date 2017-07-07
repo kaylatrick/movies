@@ -24,7 +24,7 @@ public class MovieController {
 	@RequestMapping(path = "/movie", method = RequestMethod.GET)
 		public String movie(Model model, String title, 
 				String runtime, Integer year, String plotSummary, Genre genre) {
-				Movie m = new Movie("Title", "too long", 34, "things happened", Genre.HORROR);
+				Movie m = new Movie("some title", "too long", 34, "things happened", Genre.HORROR);
 	//			http://localhost:8080/movie?title=%22title%22&runtime=%22tooLong%22&year=1995&plotSummary=%22pllot%22
 				//resetMovies();
 				//resetUsers();

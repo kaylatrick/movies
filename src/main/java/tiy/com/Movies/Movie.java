@@ -34,7 +34,7 @@ import javax.persistence.Table;
 @Entity
 @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @Table(name = "movie")
-public class Movie {
+public class Movie implements Serializable {
 	
 	@Id
 	@GeneratedValue

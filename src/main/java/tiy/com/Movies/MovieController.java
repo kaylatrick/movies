@@ -27,20 +27,6 @@ public class MovieController {
 	@Autowired
 	private UserRepository userRepository;
 	
-    @RequestMapping(value="login")
-    public String login() {
-        return "login";
-    }
-    
-    @RequestMapping(value="/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        request.setAttribute("logout","logout");
-        return "login";
-    }
 	
 	@RequestMapping(path = "/movie", method = RequestMethod.GET)
 		public String movie(Model model, String title, 

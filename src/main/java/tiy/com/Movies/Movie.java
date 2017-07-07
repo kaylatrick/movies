@@ -59,25 +59,8 @@ public class Movie implements Serializable {
 	
 	@JoinTable(name = "movie_role", joinColumns = @JoinColumn(name = "movie_id") , 
 			inverseJoinColumns = @JoinColumn(name = "role_id") )
-    @ManyToMany(fetch = FetchType.LAZY)
-	private Set<Role> roles;
-
-	// lookup from external data
-	//Showtimes
-	// calculation based on ratings list
-	//	Avg rating - operation on Ratings set
-	
-//	@ManyToMany
-//	(
-//			targetEntity=Role.class,
-//			cascade=CascadeType.ALL
-//			)
-//	@JoinTable(
-//			name="MOVIE_ROLE",
-//			joinColumns= @JoinColumn (table="movie", name="MOVIE_ID"),
-//			inverseJoinColumns=@JoinColumn(table="role", name="ROLE_ID")
-//			)
-	
+    @ManyToMany(fetch = FetchType.EAGER)
+	private Set<Role> roles;	
 	
 	public Set<Role> getRoles() {
 		return roles;

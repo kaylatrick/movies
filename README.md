@@ -1,6 +1,6 @@
-# movies
+# IMDB Clone
 
-## API Documentation Assignment
+## Assignment: API Documentation 
 
 ### 7-11-2017 Spec:
 Use Swagger to document all REST APIs on 'Movie Database' project and provide at least 4 customizations to the API documentation.
@@ -15,7 +15,7 @@ Use Swagger to document all REST APIs on 'Movie Database' project and provide at
 Added JavaDoc comments and generated JavaDocs for API.
 
 
-## IMDB Clone API Assignment
+## Assignment: IMDB Clone API 
 
 ## Routes
 ### Action	Method	Path

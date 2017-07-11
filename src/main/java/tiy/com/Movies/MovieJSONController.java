@@ -2,6 +2,9 @@ package tiy.com.Movies;
  
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -41,9 +44,18 @@ public class MovieJSONController {
 		return m;
 	}
 	
+	/**
+	 * Accepts a JSON Movie object with title, runtime, year, genre set, 
+	 * returns JSON Movie object with auto-generated ID.
+	 *
+	 * @param addingMovie A movie object with values for title, runtime, year, and genre.
+	 * @return            returnedMovie with ID set
+	 * @see               Movie
+	 */
 	// add a new movie
+    //public ResponseEntity addValueToMetric(@RequestBody @Valid Metric addMetric){  
 	@RequestMapping(path = "/api/movie/", method = RequestMethod.POST)
-	public Movie addMovie(@RequestBody Movie addingMovie) {
+	public Movie addMovie(@RequestBody @Valid Movie addingMovie) {
 		Movie returnedMovie = movieRepository.save(addingMovie);
 		return returnedMovie;
 	}

@@ -17,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         		.authorizeRequests()
 	                .antMatchers("/**").permitAll()
 	                .anyRequest().authenticated()
-//	                .and() //aggregates the rules
+//	                .and() //aggregates the rules // don't need .formLogin for APIs
 //                .formLogin()
 //	                .loginPage("/login")
 //	                .permitAll()

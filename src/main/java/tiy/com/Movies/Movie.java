@@ -30,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -42,13 +44,8 @@ public class Movie implements Serializable {
 	@Id
 	@GeneratedValue
 //	@Column(name="MOVIE_ID")
+	@ApiModelProperty(required = true)
 	int id;
-//	@ManyToOne
-//	ArrayList<Role> actorList;
-//	@ManyToOne
-//	ArrayList<Role> directorList;
-//	@ManyToOne
-//	ArrayList<Role> writerList;
 	
 	@NotNull
 	private String title;

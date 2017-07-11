@@ -13,13 +13,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-	                .antMatchers("/api**", "/role", "/", "/login").permitAll()
+                .csrf().disable()
+        		.authorizeRequests()
+	                .antMatchers("/**").permitAll()
 	                .anyRequest().authenticated()
-	                .and() //aggregates the rules
-                .formLogin()
-	                .loginPage("/login")
-	                .permitAll()
+//	                .and() //aggregates the rules // don't need .formLogin for APIs
+//                .formLogin()
+//	                .loginPage("/login")
+//	                .permitAll()
 	                .and()
                 .logout()
                 	.permitAll();

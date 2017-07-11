@@ -13,12 +13,12 @@ public class User implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	int id;
+	public int id;
 
-	String username;
-	String password;
-	String screenname;
-	String email;
+	public String username;
+	public String password;
+	public String screenname;
+	public String email;
 	
 	public User() {
 		

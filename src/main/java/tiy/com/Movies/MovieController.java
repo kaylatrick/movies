@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-//@RequestMapping('movie')
 public class MovieController {
 	
 	@Autowired
@@ -27,11 +26,11 @@ public class MovieController {
 	@Autowired
 	private UserRepository userRepository;
 	
-    @RequestMapping(value="login")
+    @RequestMapping(value="/login")
     public String login() {
         return "login";
     }
-    
+
     @RequestMapping(value="/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -41,7 +40,7 @@ public class MovieController {
         request.setAttribute("logout","logout");
         return "login";
     }
-	
+    
 	@RequestMapping(path = "/movie", method = RequestMethod.GET)
 		public String movie(Model model, String title, 
 				String runtime, Integer year, String plotSummary, Genre genre) {
@@ -70,16 +69,16 @@ public class MovieController {
 	}
 	
 	private void resetUsers() {
-		User u1 = new User("john1", "pwd1", "this is john1 screenname", "mail.com");
+		User u1 = new User("john1", "pwd1", "john", "John@aol.com");
 		userRepository.save(u1);
-		User u2 = new User("john2", "pwd2", "this is john2 screenname", "mail2.com");
+		User u2 = new User("john2", "pwd2", "john2", "John2@aol.com");
 		userRepository.save(u2);
-		User u3 = new User("john3", "pwd3", "this is john3 screenname", "mail3.com");
+		User u3 = new User("john3", "pwd3", "john3", "John3@aol.com");
 		userRepository.save(u3);
 		System.out.printf("The database contains %s users.\n", userRepository.count());
 		List<User> userList = userRepository.findAll();
         for (User userRow : userList) {
-            System.out.printf("%s) %s\n", userRow.getId(), userRow.getScreenname());
+            System.out.printf("%s) %s\n", userRow.getId(), userRow.getUsername());
         }
 	}
 	private void resetMovies() {

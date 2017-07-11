@@ -1,6 +1,7 @@
 package tiy.com.Movies;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 			+ "(:screenname is null OR UPPER(u.screenname) LIKE UPPER(CONCAT('%',:screenname,'%')))")
 	public List<User> findUserBySearch(@Param("username") String username, @Param("screenname") String screenname);
 
+	
+//	Optional<User> findByUsername(String username);
 }

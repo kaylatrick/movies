@@ -14,7 +14,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-	                .antMatchers("/api", "/role").permitAll()
+	                .antMatchers("/api**", "/role", "/", "/login").permitAll()
 	                .anyRequest().authenticated()
 	                .and() //aggregates the rules
                 .formLogin()
@@ -27,8 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("john").password("password");
-        auth.inMemoryAuthentication().withUser("kayla").password("password");
-        auth.inMemoryAuthentication().withUser("brian").password("password");
+        auth.inMemoryAuthentication().withUser("john").password("password").roles("USER");
+        auth.inMemoryAuthentication().withUser("kayla").password("password").roles("USER");
+        auth.inMemoryAuthentication().withUser("brian").password("password").roles("USER");
     }
 }

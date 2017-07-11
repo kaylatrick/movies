@@ -22,6 +22,8 @@ public class MovieJSONController {
 	private MovieRepository movieRepository;
 	@Autowired
 	private ReviewRepository reviewRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 	// return a movie for a specific ID
 	@RequestMapping(path = "/api/movie/{id}", method = RequestMethod.GET)

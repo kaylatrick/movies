@@ -52,12 +52,12 @@ public class UserJSONController {
 		if (updatingUser.getPassword() != null) {
 			u.setPassword(updatingUser.getPassword());
 		}
-		if (updatingUser.getScreenname() != null) {
-			u.setScreenname(updatingUser.getScreenname());
-		}
-		if (updatingUser.getEmail() != null) {
-			u.setEmail(updatingUser.getEmail());
-		}
+//		if (updatingUser.getScreenname() != null) {
+//			u.setScreenname(updatingUser.getScreenname());
+//		}
+//		if (updatingUser.getEmail() != null) {
+//			u.setEmail(updatingUser.getEmail());
+//		}
 		userRepository.save(u);
 		return u;
 	}

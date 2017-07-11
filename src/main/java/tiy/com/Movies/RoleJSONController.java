@@ -20,10 +20,13 @@ public class RoleJSONController implements Serializable{
 
 	@Autowired
 	private MovieRepository movieRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@RequestMapping(path = "/role/{movieId}/{roleId}", method = RequestMethod.PUT)
-	public void addMovieRole(@PathVariable(required = true) int movieId,
-			@PathVariable(required = true) int roleId) {
+	public void addMovieRole(@PathVariable int movieId,
+			@PathVariable int roleId) {
 		Movie m = movieRepository.findOne(movieId);
 		Role r = roleRepository.findOne(roleId);
 		m.getRoles().add(r);

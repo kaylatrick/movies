@@ -1,33 +1,32 @@
 package tiy.com.Movies;
 
-//import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-//import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy; 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-//import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
-//import org.springframework.mock.web.MockHttpServletRequest;
-//import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-import static org.hamcrest.Matchers.is; 
+import org.springframework.web.context.WebApplicationContext;
+//import static org.junit.Assert.*;
+//import org.mockito.Mock;
+//import org.mockito.Spy; 
+//import org.springframework.http.MediaType;
+//import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
+//import org.springframework.mock.web.MockHttpServletRequest;
+//import org.springframework.mock.web.MockHttpSession;
+//import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+//import static org.hamcrest.Matchers.is; 
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
  * based on the example by @author Josh Long
@@ -78,24 +77,22 @@ public class MovieJSONControllerSpec {
         int movieID = 1;
         mockMvc.perform(
         		get("/api/movie/" + movieID))
-        		.andExpect(content().contentType("application/json;charset=UTF-8"));
-        		//.andExpect(status().isOk()
-        //);
-
-        			//
-        			//
-        			//.andExpect(jsonPath("$.title").value("Polyester")
-        		//);
-        
-        //;
-//        mockMvc.perform(
-//                get("/api/movie/" + movieID))
-//                //.andExpect(MockMvcResultMatchers.status().isOk())
-//                //.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(jsonPath("movie.title", is("Polyester")))
-//                .andExpect(jsonPath("movie.genre", is(Genre.HORROR)));
-//                //.andExpect(jsonPath("success", is(true)));
+				.andExpect(content().contentType("application/json;charset=UTF-8"));
+        		//.andExpect(jsonPath("$.title").value("Polyester"))
+        		//.andExpect(MockMvcResultMatchers.status().isOk());
     }
-
+    
+//.andExpect(status().isOk()
+//);
+//.andExpect(jsonPath("$.title").value("Polyester"))
+//);
+//;
+//mockMvc.perform(
+//    get("/api/movie/" + movieID))
+//    //.andExpect(MockMvcResultMatchers.status().isOk())
+//    //.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+//    .andExpect(jsonPath("movie.title", is("Polyester")))
+//    .andExpect(jsonPath("movie.genre", is(Genre.HORROR)));
+//    //.andExpect(jsonPath("success", is(true)));
 	  
 }

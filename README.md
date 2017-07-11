@@ -6,10 +6,10 @@
 Use Swagger to document all REST APIs on 'Movie Database' project and provide at least 4 customizations to the API documentation.
 
 ### Customizations
-* Page heading
+* Updated page heading
 * Path changed from default to "/"
-*
-*
+* Changed Operation Section Headings to be more easily readable
+* Changed Operation Lists to describe what the method would do
 
 ### Additional Documentation
 Added JavaDoc comments and generated JavaDocs for API.

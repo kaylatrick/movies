@@ -2,16 +2,16 @@
 
 ## API Documentation Assignment
 
-## 7-11-2017 Spec:
+### 7-11-2017 Spec:
 Use Swagger to document all REST APIs on 'Movie Database' project and provide at least 4 customizations to the API documentation.
 
-## Customizations
+### Customizations
 * Page heading
 * Path changed from default to "/"
 *
 *
 
-# Additional Documentation
+### Additional Documentation
 Added JavaDoc comments and generated JavaDocs for API.
 
 

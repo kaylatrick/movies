@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@Api(value="Roles", description="JSON operations pertaining to IMDBClone roles")
 public class RoleJSONController implements Serializable{
 
 	@Autowired
@@ -24,6 +28,15 @@ public class RoleJSONController implements Serializable{
 	@Autowired
 	private UserRepository userRepository;
 
+	/**
+	 * Given a movie ID (int) and a role ID (int), add that role to that movie.
+	 *
+	 * @param movieId An int that is a valid ID for a movie.
+	 * @param roleId  An int that is a valid ID for a role.
+	 * @see           Movie
+	 * @see           Role
+	 */
+	@ApiOperation(value = "Add an existing role to an exisiting movie by role & movie IDs")
 	@RequestMapping(path = "/role/{movieId}/{roleId}", method = RequestMethod.PUT)
 	public void addMovieRole(@PathVariable int movieId,
 			@PathVariable int roleId) {
@@ -35,6 +48,17 @@ public class RoleJSONController implements Serializable{
 		roleRepository.save(r);
 	}
 
+	/**
+	 * Given a first name, last name, birthday, and / or bio find Roles that match.
+	 *
+	 * @param fName    A String that could be part or all of a first name.
+	 * @param lName    A String that could be part or all of a last name.
+	 * @param birthday A String that could be part or all of a birthday.
+	 * @param bio      A String that could be part or all of a bio.
+	 * @return         roleList a list of matching roles
+	 * @see            Role
+	 */
+	@ApiOperation(value = "Find roles based on first name, last name, birthday, and or bio")
 	@RequestMapping(path = "/role", method = RequestMethod.GET)
 	public List<Role> jsonHome(String fName, String lName, String birthday,
 			String bio) {
@@ -44,6 +68,13 @@ public class RoleJSONController implements Serializable{
 		return roleList;
 	}
 
+	/**
+	 * Return a list of all roles.
+	 *
+	 * @return roleList a list of all roles
+	 * @see    Role
+	 */
+	@ApiOperation(value = "Show all roles")
 	@RequestMapping(path = "/role/all", method = RequestMethod.GET)
 	public List<Role> findAll() {
 		// http://localhost:8080/role.json?fName=John&lName=Ulmer&birthday=Oct&bio=test
@@ -51,6 +82,14 @@ public class RoleJSONController implements Serializable{
 		return roleList;
 	}
 
+	/**
+	 * Given a role ID, return that role.
+	 *
+	 * @param  id A valid role ID (int).
+	 * @return role - the role object matching that ID
+	 * @see            Role
+	 */
+	@ApiOperation(value = "Get an existing role based on role ID")
 	@RequestMapping(path = "/role/{id}", method = RequestMethod.GET)
 	public Role getRole(@PathVariable int id) {
 		Role role = roleRepository.getOne(id);
@@ -58,6 +97,14 @@ public class RoleJSONController implements Serializable{
 		return role;
 	}
 
+	/**
+	 * Given a JSON Role object, add the Role to the DB and return the generated ID.
+	 *
+	 * @param  role A Role object that will be added.
+	 * @return r The Role object with the generated ID.
+	 * @see        Role
+	 */
+	@ApiOperation(value = "Add a new role")
 	@RequestMapping(path = "/role", method = RequestMethod.POST)
 	public Role insertRole(@RequestBody Role role) {
 		// http://localhost:8080/role?fName=John&lName=Ulmer&birthday=Oct&bio=test
@@ -78,6 +125,14 @@ public class RoleJSONController implements Serializable{
 		return r;
 	}
 
+	/**
+	 * Given a role ID, delete that role.
+	 *
+	 * @param  id   A valid role ID (int).
+	 * @return role The role object that was deleted
+	 * @see            Role
+	 */
+	@ApiOperation(value = "Delete an existing role by ID")
 	@RequestMapping(path = "/role/{id}", method = RequestMethod.DELETE)
 	public Role deleteRole(@PathVariable int id) {
 		Role role = roleRepository.findOne(id);
@@ -88,6 +143,15 @@ public class RoleJSONController implements Serializable{
 
 	// to test, go to postman > PUT > role/id > Body > "raw" radio button >
 	// fields to update in {} & ""
+	/**
+	 * Given a role ID and new property values, update that role.
+	 *
+	 * @param  id     A valid role ID (int).
+	 * @param  role   A role object containing the new values.
+	 * @return role   The role object that was updated
+	 * @see           Role
+	 */
+	@ApiOperation(value = "Update a role")
 	@RequestMapping(path = "/role/{id}", method = RequestMethod.PUT)
 	public Role updateRole(@PathVariable int id, @RequestBody Role role) {
 		Role roleRepo = roleRepository.findOne(id);

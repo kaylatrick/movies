@@ -25,8 +25,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation; 
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 
 @RestController
 @Api(value="Movies", description="JSON operations pertaining to IMDBClone movies")
@@ -38,7 +40,7 @@ public class MovieJSONController {
 	private ReviewRepository reviewRepository;
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private NewMovieValidator newMovieValidator;
 	

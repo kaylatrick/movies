@@ -39,6 +39,7 @@ public class IMDB {
 		SpringApplication.run(IMDB.class, args);
 		
 	}
+
 	
     @Bean
     public Docket swaggerSettings() {
@@ -65,4 +66,5 @@ public class IMDB {
         return apiInfo;
 
     }
+
     }

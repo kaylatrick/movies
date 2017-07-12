@@ -34,6 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -47,9 +48,10 @@ public class Movie implements Serializable {
 	@ApiModelProperty(required = true)
 	int id;
 	
-	@NotNull
+//	@NotNull
 	private String title;
 	private String runtime;
+//	@NotNull
 	private Integer year;
 	private String plotSummary;
 	private Genre genre;

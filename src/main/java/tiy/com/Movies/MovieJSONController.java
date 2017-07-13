@@ -41,8 +41,8 @@ public class MovieJSONController {
 	@Autowired
 	private UserRepository userRepository;
 
-	@Autowired
-	private NewMovieValidator newMovieValidator;
+//	@Autowired
+//	private NewMovieValidator newMovieValidator;
 	
 //	@Autowired
 //	private RestResponseEntityExceptionHandler restResponse;
@@ -59,7 +59,7 @@ public class MovieJSONController {
 	 */
 	@ApiOperation(value = "Returns a movie based on ID")
 	@RequestMapping(path = "/api/movie/{id}", method = RequestMethod.GET)
-	public Movie jsonMovie(@PathVariable Integer id) {	
+	public Movie jsonMovie(@PathVariable int id) {	
 		Movie m = movieRepository.getOne(id);
 		
 		return m;
@@ -74,7 +74,7 @@ public class MovieJSONController {
 	 */
 	@ApiOperation(value = "Deletes a movie based on ID")
 	@RequestMapping(path = "/api/movie/{id}", method = RequestMethod.DELETE)
-	public Movie deleteMovie(@PathVariable Integer id) {	
+	public Movie deleteMovie(@PathVariable int id) {	
 		Movie m = movieRepository.getOne(id);
 		movieRepository.delete(m);
 		return m;
@@ -91,17 +91,12 @@ public class MovieJSONController {
 	 */
 	@ApiOperation(value = "Adds a new movie")
 	@RequestMapping(path = "/api/movie/", method = RequestMethod.POST)
-	public Exception addMovie(@RequestBody @Valid Movie addingMovie, BindingResult result) throws Exception {
-		newMovieValidator.validate(addingMovie, result);
-		if (result.hasErrors()) {
-			logger.info("Title: '" + addingMovie.getTitle() + "' or Year: '" + "' is not valid.");
-			Exception m = new Exception();
-			return m;
-		} else {
+	public HttpStatus addMovie(@Valid @RequestBody Movie addingMovie) {
 			logger.info("Title: '" + addingMovie.getTitle() + "' was added with id: '" + addingMovie.getId() + "' and Year: '" + addingMovie.getYear() + "'.");
 			movieRepository.save(addingMovie);
-			return null; }
-	}
+			return HttpStatus.OK; 
+		}
+	
 	
 	/**
 	 * Accepts a JSON Movie object with title, runtime, year, genre set, 
@@ -113,8 +108,8 @@ public class MovieJSONController {
 	 */
 	@ApiOperation(value = "Updates a movie's title, runtime, genre, year, and / or plot summary based on ID")
 	@RequestMapping(path = "/api/movie/{id}", method = RequestMethod.PUT)
-	public Movie updateMovie(@PathVariable Integer id,
-			@RequestBody Movie updatingMovie) {
+	public Movie updateMovie(@PathVariable int id,
+			@Valid @RequestBody Movie updatingMovie) {
 		Movie m = movieRepository.getOne(id);
 		if (updatingMovie.getTitle() != null) {
 			m.setTitle(updatingMovie.getTitle());
@@ -122,15 +117,15 @@ public class MovieJSONController {
 		if (updatingMovie.getRuntime() != null) {
 			m.setRuntime(updatingMovie.getRuntime());
 		}
-		if (updatingMovie.getYear() != 0) {
+		if (Integer.toString(updatingMovie.getYear()) != null) {
 			m.setYear(updatingMovie.getYear());
 		}
 		if (updatingMovie.getPlotSummary() != null) {
 			m.setPlotSummary(updatingMovie.getPlotSummary());
 		}
-		if (!(updatingMovie.getGenre().equals(Genre.DONOTUPDATE))) {
-			m.setGenre(updatingMovie.getGenre());
-		}
+//		if ((!(updatingMovie.getGenre().equals(Genre.DONOTUPDATE))) || (updatingMovie.getGenre() != null)) {
+//			m.setGenre(updatingMovie.getGenre());
+//		}
 		movieRepository.save(m);
 		return m;
 	}

@@ -33,6 +33,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -48,11 +50,17 @@ public class Movie implements Serializable {
 	@ApiModelProperty(required = true)
 	int id;
 	
-//	@NotNull
+	@Size(min = 1)
+	@NotNull
 	private String title;
+	
 	private String runtime;
-//	@NotNull
-	private Integer year;
+	
+	@Min(1900)
+	@Max(2020)
+	@NotNull
+	private int year;
+	
 	private String plotSummary;
 	private Genre genre;
 	
@@ -81,7 +89,7 @@ public class Movie implements Serializable {
 		this.id = id;
 	}
 	
-	public Movie(String title, String runtime, Integer year, String plotSummary, Genre genre) {
+	public Movie(String title, String runtime, int year, String plotSummary, Genre genre) {
 //		this();
 		this.title = title;
 		this.runtime = runtime;
@@ -89,7 +97,7 @@ public class Movie implements Serializable {
 		this.plotSummary = plotSummary;
 		this.genre = genre;
 	}
-	public Movie(int id, String title, String runtime, Integer year, String plotSummary, Genre genre) {
+	public Movie(int id, String title, String runtime, int year, String plotSummary, Genre genre) {
 		this.id = id;
 		this.title = title;
 		this.runtime = runtime;
@@ -127,7 +135,7 @@ public class Movie implements Serializable {
 		return year;
 	}
 
-	public void setYear(Integer year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 

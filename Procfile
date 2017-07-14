@@ -1,1 +1,1 @@
-web: java -jar target/dependency/jetty-runner.jar
+web: java -jar target/Maven-0.0.1-SNAPSHOT.jar

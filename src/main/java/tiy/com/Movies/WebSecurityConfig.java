@@ -13,13 +13,6 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    
-//	@Autowired
-//    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
-//	
-//    @Autowired
-//    private MySavedRequestAwareAuthenticationSuccessHandler
-//      authenticationSuccessHandler;
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {

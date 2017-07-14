@@ -1,1 +1,1 @@
-web: -jar target/dependency/jetty-runner.jar
+web: java -jar target/dependency/jetty-runner.jar

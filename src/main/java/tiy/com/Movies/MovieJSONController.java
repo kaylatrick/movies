@@ -91,10 +91,10 @@ public class MovieJSONController {
 	 */
 	@ApiOperation(value = "Adds a new movie")
 	@RequestMapping(path = "/api/movie/", method = RequestMethod.POST)
-	public HttpStatus addMovie(@Valid @RequestBody Movie addingMovie) {
+	public Movie addMovie(@Valid @RequestBody Movie addingMovie) {
 			logger.info("Title: '" + addingMovie.getTitle() + "' was added with id: '" + addingMovie.getId() + "' and Year: '" + addingMovie.getYear() + "'.");
-			movieRepository.save(addingMovie);
-			return HttpStatus.OK; 
+			Movie m = movieRepository.save(addingMovie);
+			return m; 
 		}
 	
 	
@@ -125,7 +125,7 @@ public class MovieJSONController {
 		}
 //		if ((!(updatingMovie.getGenre().equals(Genre.DONOTUPDATE))) || (updatingMovie.getGenre() != null)) {
 //			m.setGenre(updatingMovie.getGenre());
-//		}
+//		} 
 		movieRepository.save(m);
 		return m;
 	}

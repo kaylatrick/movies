@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -62,6 +64,8 @@ public class Movie implements Serializable {
 	private int year;
 	
 	private String plotSummary;
+	
+//	@Enumerated(EnumType.STRING)
 	private Genre genre;
 	
 //	@ManyToMany(cascade = CascadeType.ALL) KR

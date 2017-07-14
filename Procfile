@@ -1,1 +1,1 @@
-web: java -jar target/movies.jar
+web: java -jar target/Movies.0.0.1-SNAPSHOT.jar

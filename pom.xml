@@ -160,8 +160,12 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>0.3.4</version>
+					<configuration>
+						<appName>moviesheroku</appName>
+					</configuration>
 			</plugin>
 		</plugins>
 	</build>
